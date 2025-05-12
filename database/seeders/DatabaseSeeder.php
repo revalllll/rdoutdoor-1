@@ -2,25 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\UsersSeeder; // Pastikan sudah diimport
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        // User::factory(10)->create();
-
-        User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('password'),
-            'role_id' => 1, // ⬅ Tambahkan baris ini
+        // Memanggil UsersSeeder untuk menambahkan data pengguna
+        $this->call([
+            UsersSeeder::class, // Memastikan UsersSeeder dipanggil
         ]);
-        
     }
 }

@@ -26,10 +26,25 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-    }
+   public function store(Request $request)
+{
+    Product::create([
+        'name' => $request->name,
+        'description' => $request->description,
+        'price' => $request->price,
+        'stock' => $request->stock,
+        'CompanyCode' => 'RDO001',
+        'Status' => 1,
+        'IsDeleted' => 0,
+        'CreatedBy' => auth()->user()->name,
+        'CreatedDate' => now(),
+        'LastUpdateBy' => auth()->user()->name,
+        'LastUpdateDate' => now(),
+    ]);
+
+    return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan');
+}
+
 
     /**
      * Display the specified resource.
