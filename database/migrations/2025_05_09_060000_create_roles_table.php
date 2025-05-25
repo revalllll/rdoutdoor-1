@@ -7,15 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 100);
-            $table->text('description')->nullable();
-            $table->decimal('price', 10, 2);
-            $table->integer('stock');
-            $table->string('image')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
-            // 7 field wajib (snake_case)
+            $table->string('name', 32);
             $table->string('company_code', 20);
             $table->tinyInteger('status');
             $table->tinyInteger('is_deleted')->default(0);
@@ -27,6 +21,6 @@ return new class extends Migration {
     }
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('roles');
     }
 };

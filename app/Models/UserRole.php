@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class UserRole extends Model
@@ -10,17 +11,18 @@ class UserRole extends Model
 
     public $timestamps = false;
 
-    protected $table = 'user_roles'; // pastikan nama tabel sesuai
+    protected $table = 'roles'; // pastikan nama tabel sesuai migration dan seeder
+
 
     protected $fillable = [
-        'role_name',
-        'CompanyCode',
-        'Status',
-        'IsDeleted',
-        'CreatedBy',
-        'CreatedDate',
-        'LastUpdateBy',
-        'LastUpdateDate',
+        'name',
+        'company_code',
+        'status',
+        'is_deleted',
+        'created_by',
+        'created_date',
+        'last_update_by',
+        'last_update_date',
     ];
 
     protected function casts(): array

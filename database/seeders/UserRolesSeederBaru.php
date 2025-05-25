@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
-class UserRoleSeeder extends Seeder
+class UserRolesSeederBaru extends Seeder
 {
     public function run(): void
     {

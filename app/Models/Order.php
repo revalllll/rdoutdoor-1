@@ -1,24 +1,20 @@
 <?php
 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Product extends Model
+class Order extends Model
 {
-
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'stock',
-        'image',
-        'category_id',
-        'company_code',
+        'user_id',
+        'total_price',
         'status',
-        'is_deleted',
+        'company_code',
+        'is_delaeted',
         'created_by',
         'created_date',
         'last_update_by',
@@ -27,13 +23,13 @@ class Product extends Model
 
     public $timestamps = false;
 
-    public function category(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(User::class);
     }
 
     public function orderItems(): HasMany
     {
-        return $this->hasMany(OrderItem::class, 'product_id');
+        return $this->hasMany(OrderItem::class);
     }
 }

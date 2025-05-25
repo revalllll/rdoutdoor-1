@@ -35,17 +35,18 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Ganti 2 dengan ID role user biasa di tabel roles Anda
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role_id' => 1, // ✅ Tambahkan ini (ganti 2 sesuai ID role default Anda)
+            'role_id' => 2, // Pastikan ini sesuai dengan role user biasa
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect()->route('dashboard');
     }
 }

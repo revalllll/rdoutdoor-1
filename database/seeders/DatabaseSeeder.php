@@ -2,21 +2,47 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\UsersSeeder; // Pastikan sudah diimport
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
+     * Seed the application's database.
      */
-    public function run()
+    public function run(): void
     {
-        // Memanggil UsersSeeder untuk menambahkan data pengguna
-        $this->call([
-            UsersSeeder::class, // Memastikan UsersSeeder dipanggil
+        // User::factory(10)->create();
+
+        $this->call(UserRolesSeederBaru::class);
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'password' => bcrypt('password'),
+            'role_id' => 3, // id user biasa
+            'company_code' => 'default',
+            'status' => 1,
+            'is_deleted' => 0,
+            'created_by' => 'system',
+            'created_date' => now(),
+            'last_update_by' => null,
+            'last_update_date' => null,
+        ]);
+
+        User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'admin@rdoutdoor.com',
+            'password' => bcrypt('admin123'),
+            'role_id' => 1, // pastikan id 1 adalah admin di tabel roles
+            'company_code' => 'default',
+            'status' => 1,
+            'is_deleted' => 0,
+            'created_by' => 'system',
+            'created_date' => now(),
+            'last_update_by' => null,
+            'last_update_date' => null,
         ]);
     }
 }
