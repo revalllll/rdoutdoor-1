@@ -75,6 +75,9 @@
         <div class="row flex-nowrap">
             <!-- Sidebar Desktop -->
             <nav class="col-12 col-lg-2 bg-dark sidebar py-3 d-none d-lg-block position-relative" id="sidebarDesktop">
+                <button class="sidebar-open-btn btn btn-dark position-absolute" id="sidebarOpenBtn" style="top: 20px; left: 220px; display: none; z-index: 1200;">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
                 <div class="sidebar-content" id="sidebarContent">
                     <div class="w-100 d-flex justify-content-between align-items-center mb-3">
                         <span class="brand-logo">RDOUTDOOR</span>
@@ -158,16 +161,21 @@
         const sidebarContent = document.getElementById('sidebarContent');
         const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
         const hamburgerDesktopBtn = document.getElementById('hamburgerDesktopBtn');
+        const sidebarOpenBtn = document.getElementById('sidebarOpenBtn');
 
-        if (sidebarDesktop && sidebarContent && sidebarCloseBtn && hamburgerDesktopBtn) {
+        if (sidebarDesktop && sidebarContent && sidebarCloseBtn && hamburgerDesktopBtn && sidebarOpenBtn) {
             sidebarCloseBtn.addEventListener('click', function() {
                 sidebarDesktop.classList.add('closed');
-                hamburgerDesktopBtn.classList.remove('d-none');
+                sidebarOpenBtn.style.display = 'block';
             });
-            hamburgerDesktopBtn.addEventListener('click', function() {
+            sidebarOpenBtn.addEventListener('click', function() {
                 sidebarDesktop.classList.remove('closed');
-                hamburgerDesktopBtn.classList.add('d-none');
+                sidebarOpenBtn.style.display = 'none';
             });
+            // Sembunyikan tombol open saat sidebar terbuka
+            if (!sidebarDesktop.classList.contains('closed')) {
+                sidebarOpenBtn.style.display = 'none';
+            }
         }
 
         // Sidebar mobile

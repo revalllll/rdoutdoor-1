@@ -5,6 +5,23 @@
 
 @section('content')
 <div class="py-4">
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul class="mb-0">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="row g-4 mb-4">
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card shadow-sm border-0 h-100">
@@ -45,24 +62,58 @@
                     <thead class="table-light">
                         <tr>
                             <th>#</th>
-                            <th>Order Number</th>
-                            <th>Customer</th>
-                            <th>Total</th>
-                            <th>Tanggal</th>
+                            <th>Nama Produk</th>
+                            <th>Nama Customer</th>
+                            <th>Alat Disewa</th>
+                            <th>Tanggal Sewa</th>
+                            <th>Total Harga</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($latestOrders as $order)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $order->order_number }}</td>
+                            <td>
+                                @if($order->orderItems->count())
+                                    {{ $order->orderItems->first()->product->name ?? '-' }}
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td>{{ $order->customer_name }}</td>
-                            <td>Rp{{ number_format($order->total,0,',','.') }}</td>
-                            <td>{{ $order->order_date }}</td>
+                            <td>
+                                @if($order->orderItems->count())
+                                    <ul class="mb-0 ps-3">
+                                    @foreach($order->orderItems as $item)
+                                        <li>{{ $item->product->name ?? '-' }} ({{ $item->quantity }})</li>
+                                    @endforeach
+                                    </ul>
+                                @else
+                                    -
+                                @endif
+                            </td>
+                            <td>
+                                @if($order->start_date && $order->end_date)
+                                    {{ $order->start_date }} s/d {{ $order->end_date }}
+                                @else
+                                    {{ $order->order_date }}
+                                @endif
+                            </td>
+                            <td>Rp{{ number_format($order->total_price,0,',','.') }}</td>
+                            <td>
+                                @php
+                                    $badge = 'secondary';
+                                    if ($order->status === 'pending') $badge = 'warning';
+                                    elseif ($order->status === 'selesai') $badge = 'success';
+                                    elseif ($order->status === 'batal') $badge = 'danger';
+                                @endphp
+                                <span class="badge bg-{{ $badge }}">{{ ucfirst($order->status) }}</span>
+                            </td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="5" class="text-center text-muted">Belum ada order.</td>
+                            <td colspan="7" class="text-center text-muted">Belum ada order.</td>
                         </tr>
                         @endforelse
                     </tbody>

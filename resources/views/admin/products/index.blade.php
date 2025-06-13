@@ -18,6 +18,7 @@
         <thead class="table-light">
             <tr>
                 <th>#</th>
+                <th>Gambar</th>
                 <th>Nama Produk</th>
                 <th>Harga Sewa</th>
                 <th>Stok</th>
@@ -29,6 +30,13 @@
             @forelse($products as $product)
             <tr>
                 <td>{{ $loop->iteration }}</td>
+                <td>
+                    @if($product->image)
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" style="max-width:60px;max-height:60px;object-fit:cover;">
+                    @else
+                        <span class="text-muted">-</span>
+                    @endif
+                </td>
                 <td>{{ $product->name }}</td>
                 <td>Rp{{ number_format($product->price,0,',','.') }}</td>
                 <td>{{ $product->stock }}</td>
@@ -44,7 +52,7 @@
             </tr>
             @empty
             <tr>
-                <td colspan="6" class="text-center text-muted">Belum ada produk.</td>
+                <td colspan="7" class="text-center text-muted">Belum ada produk.</td>
             </tr>
             @endforelse
         </tbody>

@@ -26,14 +26,14 @@ class GoogleController extends Controller
                 [
                     'name' => $googleUser->getName(),
                     'password' => bcrypt(Str::random(16)),
-                    'role_id' => 1, // default: user biasa
-                    'CompanyCode' => null,
-                    'Status' => 1,
-                    'IsDeleted' => 0,
-                    'CreatedBy' => 'google',
-                    'CreatedDate' => Carbon::now(),
-                    'LastUpdateBy' => 'google',
-                    'LastUpdateDate' => Carbon::now(),
+                    'role_id' => 3, // id user biasa
+                    'company_code' => 'default',
+                    'status' => 1,
+                    'is_deleted' => 0,
+                    'created_by' => 'google',
+                    'created_date' => Carbon::now(),
+                    'last_update_by' => 'google',
+                    'last_update_date' => Carbon::now(),
                 ]
             );
 

@@ -39,7 +39,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'category_id' => 'required',
+            'category' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
         ]);
@@ -52,6 +52,7 @@ class ProductController extends Controller
         $data['created_date'] = now();
         $data['last_update_by'] = null;
         $data['last_update_date'] = null;
+        $data['category_id'] = null; // pastikan tidak mengisi category_id
 
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('products', 'public');
@@ -75,7 +76,7 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'category_id' => 'required',
+            'category' => 'required',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
         ]);

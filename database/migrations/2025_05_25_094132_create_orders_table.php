@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->string('customer_name', 100);
             $table->decimal('total_price', 12, 2); // ubah dari 'total' menjadi 'total_price'
             $table->date('order_date');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             // 7 field wajib
             $table->string('CompanyCode', 20);
             $table->tinyInteger('Status')->default(1);

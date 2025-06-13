@@ -16,6 +16,7 @@ class Product extends Model
         'stock',
         'image',
         'category_id',
+        'category', // tambahkan agar field category bisa diisi
         'company_code',
         'status',
         'is_deleted',

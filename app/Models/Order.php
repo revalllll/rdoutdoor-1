@@ -10,15 +10,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Order extends Model
 {
     protected $fillable = [
-        'user_id',
+        'order_number',
+        'customer_name',
+        'address', // alamat penyewa
         'total_price',
+        'order_date',
+        'start_date',
+        'end_date',
         'status',
-        'company_code',
-        'is_delaeted',
-        'created_by',
-        'created_date',
-        'last_update_by',
-        'last_update_date',
+        'CompanyCode',
+        'IsDeleted',
+        'CreatedBy',
+        'CreatedDate',
+        'LastUpdateBy',
+        'LastUpdateDate',
     ];
 
     public $timestamps = false;
