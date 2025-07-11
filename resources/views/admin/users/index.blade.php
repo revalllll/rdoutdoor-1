@@ -13,6 +13,10 @@
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>CreatedBy</th>
+                <th>CreatedDate</th>
+                <th>LastUpdateBy</th>
+                <th>LastUpdateDate</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -23,6 +27,10 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->role ? $user->role->role_name : '-' }}</td>
+                <td>{{ $user->created_by ?? '-' }}</td>
+                <td>{{ $user->created_date ?? '-' }}</td>
+                <td>{{ $user->last_update_by ?? '-' }}</td>
+                <td>{{ $user->last_update_date ?? '-' }}</td>
                 <td>
                     <a href="{{ route('admin.users.show', $user) }}" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                     <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></a>
@@ -30,7 +38,7 @@
             </tr>
             @empty
             <tr>
-                <td colspan="5" class="text-center text-muted">Belum ada user.</td>
+                <td colspan="9" class="text-center text-muted">Belum ada user.</td>
             </tr>
             @endforelse
         </tbody>

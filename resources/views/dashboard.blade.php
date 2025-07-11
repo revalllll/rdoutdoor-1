@@ -88,9 +88,9 @@
             <div class="col-md-4">
                 <div class="card shadow border-0 mb-4 bg-light">
                     <div class="card-body text-center">
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=0D8ABC&color=fff&size=100" class="rounded-circle mb-2" width="80" height="80" alt="Avatar">
-                        <h5 class="mb-0">{{ Auth::user()->name }}</h5>
-                        <div class="text-muted small mb-2">{{ Auth::user()->email }}</div>
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()?->name ?? 'Guest') }}&background=0D8ABC&color=fff&size=100" class="rounded-circle mb-2" width="80" height="80" alt="Avatar">
+                        <h5 class="mb-0">{{ Auth::user()?->name ?? 'Guest' }}</h5>
+                        <div class="text-muted small mb-2">{{ Auth::user()?->email ?? '-' }}</div>
                         <a href="{{ route('profile.edit') }}" class="btn btn-outline-primary btn-sm">Edit Profil</a>
                     </div>
                 </div>

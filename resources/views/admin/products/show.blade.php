@@ -26,6 +26,6 @@
             <span class="text-muted">Tidak ada gambar</span>
         @endif
     </div>
-    <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Kembali</a>
+    <a href="{{ url('/dashboard') }}" class="btn btn-secondary">Kembali</a>
 </div>
 @endsection

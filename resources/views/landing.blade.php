@@ -263,21 +263,23 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3 mb-4">
-        <div class="container">
-            <a href="/" class="navbar-brand-logo">
-                <img src="{{ asset('images/logorido.jpg') }}" alt="Logo RDOUTDOOR">
-                <span>RDOUTDOOR</span>
-            </a>
-            <form class="d-none d-lg-flex ms-4 flex-grow-1" action="{{ route('search') }}" method="GET">
-                <input class="form-control rounded-pill px-4" type="search" name="q" placeholder="Cari alat outdoor..." style="max-width:320px;">
-                <button class="btn btn-light ms-2 rounded-circle" type="submit"><i class="bi bi-search"></i></button>
-            </form>
-            <ul class="navbar-nav ms-auto align-items-center gap-2 nav-pills">
-                <li class="nav-item"><a class="nav-link" href="#start-rental-btn">Rental</a></li>
-                <li class="nav-item"><a class="nav-link" href="#aboutus">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contactus">Contact</a></li>
-                <li class="nav-item"><a class="btn btn-outline-success px-4" style="border-color:#17635c;color:#17635c;" onmouseover="this.style.background='#17635c';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='#17635c';" href="{{ route('login') }}">Login</a></li>
-                <li class="nav-item"><a class="btn btn-success px-4" style="background:#17635c;border-color:#17635c;" onmouseover="this.style.background='#1b7c6e';" onmouseout="this.style.background='#17635c';" href="{{ route('register') }}">Daftar</a></li>
+        <div class="container flex-column flex-lg-row align-items-start align-items-lg-center">
+            <div class="w-100 d-flex flex-column flex-lg-row align-items-center justify-content-between">
+                <a href="/" class="navbar-brand-logo mb-3 mb-lg-0 mx-auto mx-lg-0" style="display:flex;align-items:center;gap:0.7rem;">
+                    <img src="{{ asset('images/logorido.jpg') }}" alt="Logo RDOUTDOOR">
+                    <span>RDOUTDOOR</span>
+                </a>
+                <form class="d-none d-lg-flex ms-4 flex-grow-1" action="{{ route('search') }}" method="GET">
+                    <input class="form-control rounded-pill px-4" type="search" name="q" placeholder="Cari alat outdoor..." style="max-width:320px;">
+                    <button class="btn btn-light ms-2 rounded-circle" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+            <ul class="navbar-nav w-100 flex-column flex-lg-row align-items-center gap-2 nav-pills mt-3 mt-lg-0" style="text-align:center;">
+                <li class="nav-item w-100"><a class="nav-link w-100" href="#start-rental-btn">Rental</a></li>
+                <li class="nav-item w-100"><a class="nav-link w-100" href="#aboutus">About</a></li>
+                <li class="nav-item w-100"><a class="nav-link w-100" href="#contactus">Contact</a></li>
+                <li class="nav-item w-100"><a class="btn btn-outline-success w-100 my-1" style="border-color:#17635c;color:#17635c;" onmouseover="this.style.background='#17635c';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='#17635c';" href="{{ route('login') }}">Login</a></li>
+                <li class="nav-item w-100"><a class="btn btn-success w-100" style="background:#17635c;border-color:#17635c;" onmouseover="this.style.background='#1b7c6e';" onmouseout="this.style.background='#17635c';" href="{{ route('register') }}">Daftar</a></li>
             </ul>
         </div>
     </nav>
@@ -353,7 +355,7 @@
         </div>
         <div class="row mt-2">
           <div class="col-12 col-lg-8">
-            <div id="aboutus-desc-fade" class="stroke-white-green aboutus-desc-visible" style="font-size:1rem;line-height:1.5;">Kami percaya setiap orang berhak menjelajah keindahan alam dengan mudah dan aman. Misi kami adalah menyediakan layanan sewa alat outdoor yang mudah, terpercaya, dan berkualitas, agar petualanganmu selalu berkesan dan tak terlupakan.</div>
+            <div id="aboutus-desc-fade" class="stroke-white-green aboutus_desc_visible" style="font-size:1rem;line-height:1.5;">Kami percaya setiap orang berhak menjelajah keindahan alam dengan mudah dan aman. Misi kami adalah menyediakan layanan sewa alat outdoor yang mudah, terpercaya, dan berkualitas, agar petualanganmu selalu berkesan dan tak terlupakan.</div>
           </div>
         </div>
       </div>
@@ -372,24 +374,24 @@
                 </div>
                 <div class="col-12 text-center">
                     <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
-                        <div class="d-flex align-items-center gap-2">
+                        <a href="https://wa.me/6281211830261?text=Halo%20admin%20RDOUTDOOR%2C%20saya%20ingin%20bertanya%20tentang%20penyewaan%20alat%20outdoor." target="_blank" rel="noopener" class="d-flex align-items-center gap-2 text-decoration-none">
                             <span style="display:inline-flex;align-items:center;justify-content:center;width:2.7rem;height:2.7rem;background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(23,99,92,0.13);border:2px solid #25D366;overflow:hidden;">
                                 <img src="{{ asset('images/whatsapp.jpg') }}" alt="WhatsApp" style="width:1.7rem;height:1.7rem;object-fit:contain;">
                             </span>
                             <span class="fw-semibold contactus-stroke" style="font-size:1.15rem;color:#11443e;">081211830261</span>
-                        </div>
-                        <div class="d-flex align-items-center gap-2">
+                        </a>
+                        <a href="https://instagram.com/rdoutdoor11" target="_blank" rel="noopener" class="d-flex align-items-center gap-2 text-decoration-none">
                             <span style="display:inline-flex;align-items:center;justify-content:center;width:2.7rem;height:2.7rem;background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(23,99,92,0.13);border:2px solid #E4405F;overflow:hidden;">
                                 <img src="{{ asset('images/instagram.jpg') }}" alt="Instagram" style="width:1.7rem;height:1.7rem;object-fit:contain;">
                             </span>
                             <span class="fw-semibold contactus-stroke" style="font-size:1.15rem;color:#11443e;">@rdoutdoor11</span>
-                        </div>
-                        <div class="d-flex align-items-center gap-2">
+                        </a>
+                        <a href="https://maps.app.goo.gl/xGDHYEtUzn4sGRSf6?g_st=iwb" target="_blank" rel="noopener" class="d-flex align-items-center gap-2 text-decoration-none">
                             <span style="font-size:1.5rem;color:#17635c;background:#fff;border-radius:50%;padding:4px 8px;box-shadow:0 2px 8px rgba(23,99,92,0.13);border:2px solid #17635c;">
                                 <i class="bi bi-geo-alt-fill"></i>
                             </span>
                             <span class="fw-semibold contactus-stroke" style="font-size:1.1rem;color:#11443e;">Serang Cibarusah</span>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

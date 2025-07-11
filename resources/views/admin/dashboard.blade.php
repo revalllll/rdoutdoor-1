@@ -52,7 +52,46 @@
         {{-- Tambahkan statistik lain jika perlu --}}
     </div>
 
-    <div class="card shadow-sm border-0 mb-4">
+    {{-- <div class="card shadow-sm border-0 mb-4">
+        <div class="card-header bg-white fw-bold">
+            Grafik Order per Bulan
+        </div>
+        <div class="card-body">
+            <canvas id="ordersChart" height="100"></canvas>
+        </div>
+    </div> --}}
+
+    <div class="card shadow-sm border-0 mb-4 d-block d-md-none">
+        <div class="card-header bg-white fw-bold">Order Terbaru</div>
+        <div class="card-body p-0">
+            @forelse($latestOrders as $order)
+                <div class="border rounded mb-3 p-3">
+                    <div class="mb-2"><span class="fw-bold">Nama Produk:</span> {{ $order->orderItems->first()->product->name ?? '-' }}</div>
+                    <div class="mb-2"><span class="fw-bold">Customer:</span> {{ $order->customer_name }}</div>
+                    <div class="mb-2"><span class="fw-bold">Alat Disewa:</span>
+                        <ul class="mb-0 ps-3">
+                        @foreach($order->orderItems as $item)
+                            <li>{{ $item->product->name ?? '-' }} ({{ $item->quantity }})</li>
+                        @endforeach
+                        </ul>
+                    </div>
+                    <div class="mb-2"><span class="fw-bold">Tanggal Sewa:</span> @if($order->start_date && $order->end_date){{ $order->start_date }} s/d {{ $order->end_date }}@else{{ $order->order_date }}@endif</div>
+                    <div class="mb-2"><span class="fw-bold">Total Harga:</span> Rp{{ number_format($order->total_price,0,',','.') }}</div>
+                    <div class="mb-2"><span class="fw-bold">Status:</span> <span class="badge bg-{{ $order->status_badge }}">{{ $order->status_label }}</span></div>
+                    <div class="d-flex gap-2 flex-wrap mt-2">
+                        <a href="#" class="btn btn-info btn-sm">Detail</a>
+                        <a href="#" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="#" class="btn btn-secondary btn-sm">Export Resi</a>
+                        <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                    </div>
+                </div>
+            @empty
+                <div class="text-center text-muted py-3">Belum ada order.</div>
+            @endforelse
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0 mb-4 d-none d-md-block">
         <div class="card-header bg-white fw-bold">
             Order Terbaru
         </div>
@@ -103,12 +142,10 @@
                             <td>Rp{{ number_format($order->total_price,0,',','.') }}</td>
                             <td>
                                 @php
-                                    $badge = 'secondary';
-                                    if ($order->status === 'pending') $badge = 'warning';
-                                    elseif ($order->status === 'selesai') $badge = 'success';
-                                    elseif ($order->status === 'batal') $badge = 'danger';
+                                    $label = $order->status_label;
+                                    $badge = $order->status_badge;
                                 @endphp
-                                <span class="badge bg-{{ $badge }}">{{ ucfirst($order->status) }}</span>
+                                <span class="badge bg-{{ $badge }}">{{ $label }}</span>
                             </td>
                         </tr>
                         @empty
@@ -123,3 +160,35 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+    {{-- Script chart dihapus --}}
+@endsection
+
+<style>
+@media (max-width: 600px) {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table thead th, .table tbody td {
+    font-size: 0.92rem;
+    white-space: nowrap;
+    padding: 0.4rem 0.5rem;
+    vertical-align: middle;
+  }
+  .card-header.fw-bold, h2, h3, h4 {
+    font-size: 1.1rem !important;
+  }
+  .btn, .form-control {
+    font-size: 0.98rem !important;
+  }
+  .sidebar-toggle, .sidebar-btn {
+    margin-top: 0.7rem !important;
+    z-index: 1001;
+  }
+  .filter-bar, .mb-4 > .d-flex, .mb-4 > .row {
+    margin-bottom: 1rem !important;
+  }
+}
+</style>

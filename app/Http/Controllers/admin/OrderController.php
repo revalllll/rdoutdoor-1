@@ -50,18 +50,18 @@ class OrderController extends Controller
             'address' => 'required|string|max:255',
             'total' => 'required|numeric|min:0',
             'order_date' => 'required|date',
-            'status' => 'required|in:pending,selesai,batal',
+            'status' => 'required|in:pending,for rent,selesai,batal',
         ]);
         $order->order_number = $data['order_number'];
         $order->customer_name = $data['customer_name'];
         $order->address = $data['address'];
         $order->total_price = $data['total'];
         $order->order_date = $data['order_date'];
-        $order->status = $data['status']; // status order (pending, selesai, batal)
+        $order->status = $data['status']; // update status string
         $order->LastUpdateBy = Auth::user()->name;
         $order->LastUpdateDate = now();
         $order->save();
-
+        \Log::info('Order after update:', $order->toArray());
         return redirect()->route('admin.orders.index')->with('success', 'Order updated!');
     }
 

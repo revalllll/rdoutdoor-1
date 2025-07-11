@@ -1,5 +1,5 @@
 {{-- filepath: resources/views/admin/orders/edit.blade.php --}}
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container mt-4">
@@ -26,6 +26,7 @@
             <label>Status</label>
             <select name="status" class="form-control" required>
                 <option value="pending" @if($order->status=='pending') selected @endif>Pending</option>
+                <option value="for rent" @if($order->status=='for rent') selected @endif>For Rent</option>
                 <option value="selesai" @if($order->status=='selesai') selected @endif>Selesai</option>
                 <option value="batal" @if($order->status=='batal') selected @endif>Batal</option>
             </select>

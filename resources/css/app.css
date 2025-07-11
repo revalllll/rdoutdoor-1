@@ -1,3 +1,325 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom RDOUTDOOR Dashboard Styles */
+body {
+    background: #f8fafc;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.hero-rd {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background: #fff;
+    border-radius: 2.5rem;
+    box-shadow: 0 8px 32px rgba(23,99,92,0.10);
+    margin-bottom: 2.5rem;
+    min-height: 340px;
+    position: relative;
+}
+.hero-img {
+    flex: 1 1 0%;
+    background: url('/images/hero-hiking.jpg') center/cover no-repeat;
+    min-height: 340px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.hero-img::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: linear-gradient(0deg,rgba(23,99,92,0.13) 0%,rgba(255,255,255,0.0) 100%);
+    z-index: 1;
+}
+.hero-content {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.7rem 2.5rem 2.7rem 2.7rem;
+    z-index: 2;
+    color: #17635c;
+    background: #fff;
+    position: relative;
+}
+.hero-badge {
+    display: inline-block;
+    background: #ffe3db;
+    color: #e67e22;
+    font-weight: 800;
+    font-size: 1.1rem;
+    border-radius: 1.2rem;
+    padding: 0.5em 1.5em;
+    margin-bottom: 1.1rem;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px #fff3;
+}
+.hero-title {
+    font-size: 2.7rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.7rem;
+    color: #17635c;
+    letter-spacing: 1px;
+}
+.hero-title .highlight {
+    color: #e67e22;
+    text-shadow: 0 2px 8px #fff;
+}
+.hero-desc {
+    font-size: 1.13rem;
+    margin-bottom: 1.2rem;
+    color: #17635c;
+    max-width: 420px;
+}
+.hero-cta {
+    background: linear-gradient(90deg,#e67e22 60%,#ffb84d 100%);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 0.75rem 2.2rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 16px rgba(230,126,34,0.13);
+    border: none;
+    transition: background .2s, color .2s, box-shadow .2s, transform .2s;
+    letter-spacing: 1px;
+}
+.hero-cta:hover, .hero-cta:focus {
+    background: linear-gradient(90deg,#ffb84d 60%,#e67e22 100%);
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(230,126,34,0.18);
+    transform: scale(1.07);
+}
+.hero-social {
+    margin-top: 2.2rem;
+    display: flex;
+    gap: 1.2rem;
+}
+.hero-social a {
+    color: #17635c;
+    background: #fff;
+    border-radius: 50%;
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 2px 8px #e6f4f1;
+    transition: background .2s, color .2s, transform .2s;
+}
+.hero-social a:hover { background: #e67e22; color: #fff; transform: scale(1.12); }
+.divider-wave {
+    width: 100%; height: 36px; margin: 0 0 2rem 0; display: block;
+}
+.product-section-bg {
+    background: #fff;
+    border-radius: 2rem;
+    padding: 2.5rem 1.2rem 2.5rem 1.2rem;
+    box-shadow: 0 4px 24px rgba(23,99,92,0.07);
+    position: relative;
+}
+.product-card { border-radius: 1.5rem; box-shadow: 0 8px 32px rgba(23,99,92,0.13); border: 1.5px solid #e6f4f1; transition: box-shadow .2s, transform .2s; background: #fff; position: relative; }
+.product-card:hover { box-shadow: 0 16px 48px rgba(23,99,92,0.18); transform: scale(1.05); border-color: #17635c; }
+.product-badge { position: absolute; top: 1rem; left: 1rem; z-index: 2; font-size: 1.1rem; padding: 0.5em 1.3em; border-radius: 1.2em; box-shadow: 0 2px 8px #fff3; letter-spacing: 1px; background: linear-gradient(90deg,#ffb84d 60%,#e67e22 100%); color: #fff; font-weight: 800; }
+.product-badge.bg-danger { background: linear-gradient(90deg,#e74c3c 60%,#ffb3a7 100%); color: #fff; }
+.product-img { height: 160px; object-fit: contain; background: #f8f9fa; border-radius: 1.2rem; }
+.product-title { color: #17635c; font-weight: 700; font-size: 1.13rem; }
+.product-price { color: #17635c; font-weight: 700; font-size: 1.15rem; }
+.product-oldprice { text-decoration: line-through; color: #e74c3c; font-size: 1.02rem; }
+.btn-sewa { background: #17635c; color: #fff; border-radius: 2rem; font-weight: 700; transition: background .2s, color .2s, box-shadow .2s, transform .2s; font-size: 1.08rem; }
+.btn-sewa:hover, .btn-sewa:focus { background: #1b7c6e; color: #fff; box-shadow: 0 4px 16px rgba(23,99,92,0.12); transform: scale(1.07); }
+.section-title { color: #17635c; font-size: 1.5rem; font-weight: 800; letter-spacing: 1px; }
+.see-more-link { color: #17635c; font-weight: 600; text-decoration: none; transition: color .2s; }
+.see-more-link:hover { color: #e67e22; text-decoration: underline; }
+/* --- RDOUTDOOR NAVBAR MODERN --- */
+nav.bg-white.border-b {
+    background: #fff;
+    border: none;
+    box-shadow: 0 4px 24px rgba(23,99,92,0.07);
+    border-radius: 0 0 2rem 2rem;
+    margin-bottom: 1.5rem;
+    padding-top: 0.5rem;
+}
+nav .flex.items-center {
+    gap: 1.2rem;
+}
+nav .shrink-0.flex.items-center a {
+    padding: 0.2rem 0.7rem 0.2rem 0;
+}
+nav .shrink-0.flex.items-center svg,
+nav .shrink-0.flex.items-center img,
+nav .shrink-0.flex.items-center .block {
+    height: 2.2rem !important;
+    width: auto !important;
+    filter: drop-shadow(0 2px 8px #e6f4f1);
+}
+nav .space-x-8 > * {
+    font-weight: 700;
+    font-size: 1.13rem;
+    color: #17635c !important;
+    letter-spacing: 1px;
+    padding: 0.2rem 1.1rem;
+    border-radius: 1.2rem;
+    transition: background .2s, color .2s;
+}
+nav .space-x-8 > *:hover, nav .space-x-8 > *[aria-current="page"] {
+    background: #e6f4f1;
+    color: #e67e22 !important;
+}
+nav .inline-flex.items-center.px-3 {
+    background: #f8fafc;
+    color: #17635c;
+    border-radius: 1.2rem;
+    font-weight: 600;
+    font-size: 1.08rem;
+    box-shadow: 0 2px 8px #e6f4f1;
+    padding: 0.5rem 1.3rem;
+    transition: background .2s, color .2s;
+}
+nav .inline-flex.items-center.px-3:hover {
+    background: #e67e22;
+    color: #fff;
+}
+nav .fill-current.h-4.w-4 {
+    color: #e67e22;
+    margin-left: 0.5rem;
+}
+nav .topbar-profile-anim {
+    transition: box-shadow .22s, transform .22s, background .22s, color .22s !important;
+    box-shadow: 0 2px 8px #e6f4f1 !important;
+    background: #fff !important;
+    color: #17635c !important;
+    border-radius: 2rem !important;
+    font-weight: 600;
+    font-size: 1.08rem;
+    padding: 0.5rem 1.3rem;
+}
+nav .topbar-profile-anim:hover, nav .topbar-profile-anim:focus {
+    background: #e67e22 !important;
+    color: #fff !important;
+    box-shadow: 0 8px 32px rgba(230,126,34,0.18) !important;
+    transform: scale(1.06) !important;
+}
+@media (max-width: 991.98px) {
+  .hero-title {
+    font-size: 2rem;
+    margin-top: 1.2rem;
+  }
+  .aboutus-title, .contactus-title {
+    font-size: 1.4rem;
+  }
+  .aboutus-bg, .aboutus-bg > .container {
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+    border-radius: 1.2rem !important;
+  }
+  .aboutus-bg img {
+    max-width: 98vw;
+    min-width: 120px;
+    border-radius: 1.2rem;
+    margin-top: 18px;
+  }
+  .feature-badge, .btn-mulai-rental {
+    font-size: 0.98rem;
+    padding: 0.5rem 1.2rem;
+  }
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 98vw !important;
+    padding-left: 0.7rem !important;
+    padding-right: 0.7rem !important;
+  }
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .col-lg-6, .col-lg-7, .col-lg-5, .col-lg-8, .col-lg-4, .col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .rounded-hero-img {
+    max-width: 90vw !important;
+    padding: 1rem !important;
+  }
+  .navbar .container {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .navbar-nav {
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+  }
+  .navbar-brand-logo span {
+    font-size: 1.1rem;
+  }
+  .contactus-animate .d-flex {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+}
+@media (max-width: 575.98px) {
+  .hero-title {
+    font-size: 1.3rem;
+    margin-top: 0.7rem;
+  }
+  .aboutus-title, .contactus-title {
+    font-size: 1.1rem;
+  }
+  .aboutus-bg, .aboutus-bg > .container {
+    padding-top: 0.7rem !important;
+    padding-bottom: 0.7rem !important;
+    border-radius: 0.7rem !important;
+  }
+  .aboutus-bg img {
+    max-width: 99vw;
+    min-width: 80px;
+    border-radius: 0.7rem;
+    margin-top: 8px;
+  }
+  .feature-badge, .btn-mulai-rental {
+    font-size: 0.89rem;
+    padding: 0.4rem 0.7rem;
+  }
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 100vw !important;
+    padding-left: 0.3rem !important;
+    padding-right: 0.3rem !important;
+  }
+  .rounded-hero-img {
+    max-width: 98vw !important;
+    padding: 0.5rem !important;
+  }
+  .navbar .container {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .navbar-nav {
+    flex-direction: column !important;
+    gap: 0.3rem !important;
+  }
+  .navbar-brand-logo span {
+    font-size: 0.98rem;
+  }
+  .contactus-animate .d-flex {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+}
+/* Avatar proporsional di profile */
+img.rounded-full {
+  aspect-ratio: 1/1;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+}
+.topbar-profile-anim {
+    transition: box-shadow .22s, transform .22s, background .22s, color .22s;
+    box-shadow: 0 2px 8px #e6f4f1;
+}
+.topbar-profile-anim:hover, .topbar-profile-anim:focus {
+    background: #e67e22 !important;
+    color: #fff !important;
+    box-shadow: 0 8px 32px rgba(230,126,34,0.18);
+    transform: scale(1.06);
+}

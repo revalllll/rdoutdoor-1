@@ -1,0 +1,118 @@
+/* Custom sidebar fixes for user panel */
+#sidebarDesktopUser {
+    position: sticky !important;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1030; /* higher than default content */
+    min-width: 220px;
+    max-width: 260px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+}
+
+#sidebarDesktopUser .sidebar-content {
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media (max-width: 991.98px) {
+    #sidebarDesktopUser {
+        display: none !important;
+    }
+}
+
+.sidebar-mobile {
+    z-index: 1050 !important;
+}
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: #23272f;
+    color: #fff;
+    padding: 32px 16px 16px 16px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar .sidebar-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 32px;
+    letter-spacing: 1px;
+}
+
+.sidebar .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.2s;
+    margin-bottom: 4px;
+}
+
+.sidebar .sidebar-link.active, .sidebar .sidebar-link:hover {
+    background: #2563eb;
+    color: #fff;
+}
+
+.sidebar .logout-btn {
+    margin-top: auto;
+    background: #23272f;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar .logout-btn:hover {
+    background: #ef4444;
+    color: #fff;
+}
+
+/* Main content adjustment */
+.main-content {
+    margin-left: 240px; /* sidebar width + some gap */
+    padding: 32px 24px 24px 24px;
+    min-height: 100vh;
+    background: #f8fafc;
+    transition: margin-left 0.2s;
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 160px;
+        padding: 24px 8px 8px 8px;
+    }
+    .main-content {
+        margin-left: 170px;
+        padding: 20px 8px 8px 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        padding: 8px;
+        box-shadow: none;
+    }
+    .main-content {
+        margin-left: 0;
+        padding: 12px 4px;
+    }
+}

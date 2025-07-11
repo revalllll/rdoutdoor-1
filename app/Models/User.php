@@ -24,6 +24,14 @@ class User extends Authenticatable
         'created_date',
         'last_update_by',
         'last_update_date',
+        'first_name',
+        'last_name',
+        'dob',
+        'phone',
+        'country',
+        'city',
+        'postal_code',
+        'profile_photo',
     ];
 
     protected $hidden = [

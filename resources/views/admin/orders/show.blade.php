@@ -1,5 +1,5 @@
 {{-- filepath: resources/views/admin/orders/show.blade.php --}}
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container mt-4">
@@ -27,12 +27,10 @@
     <div class="mb-3">
         <strong>Status:</strong>
         @php
-            $badge = 'secondary';
-            if ($order->status === 'pending') $badge = 'warning';
-            elseif ($order->status === 'selesai') $badge = 'success';
-            elseif ($order->status === 'batal') $badge = 'danger';
+            $label = $order->status_label;
+            $badge = $order->status_badge;
         @endphp
-        <span class="badge bg-{{ $badge }}">{{ ucfirst($order->status) }}</span>
+        <span class="badge bg-{{ $badge }}">{{ $label }}</span>
     </div>
     <div class="mb-3">
         <strong>Alamat Penyewa:</strong> {{ $order->address }}
